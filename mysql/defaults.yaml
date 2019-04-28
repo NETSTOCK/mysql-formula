@@ -1,11 +1,11 @@
 # vim: sts=2 ts=2 sw=2 et ai
 #
 mysql:
-  serverpkg: mysql-server
-  clientpkg: mysql-client
+  serverpkg: percona-server-server-5.7
+  clientpkg: percona-server-client-5.7
   service: mysql
   pythonpkg: python-mysqldb
-  devpkg: mysql-devel
+  devpkg: libperconaserverclient20-dev
   debconf_utils: debconf-utils
 
   config:

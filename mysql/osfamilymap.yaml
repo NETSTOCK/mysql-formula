@@ -2,14 +2,6 @@
 #
 
 Debian:
-    {% if salt['grains.get']('osmajorrelease')|int >= 9 %}
-  serverpkg: mariadb-server
-  service: mariadb
-  clientpkg: mariadb-client
-  devpkg: libmariadbclient-dev
-    {% else %}
-  devpkg: libmysqlclient-dev
-    {% endif %}
 
   config:
     sections:
@@ -42,9 +34,6 @@ Debian:
         key_buffer_size: 16M
     append: |
       !includedir /etc/mysql/conf.d/
-      # {% if salt['grains.get']('osmajorrelease')|int >= 9 -%}
-      # !includedir /etc/mysql/mariadb.conf.d/
-      # {%- endif %}
 
 RedHat:
   #https://mariadb.com/blog/rhel7-transition-mysql-mariadb-first-look
@@ -91,7 +80,7 @@ Suse:
         port:
         user:
         socket:
-        datadir: 
+        datadir:
         tmpdir:
         innodb_file_format: Barracuda
         innodb_file_per_table: ON

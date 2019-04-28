@@ -10,6 +10,12 @@
 {% set mysql_dev = salt['pillar.get']('mysql:dev:install', False) %}
 {% set mysql_salt_user = salt['pillar.get']('mysql:salt_user:salt_user_name', False) %}
 
+# Adding Percona repo here for now
+percona-repo:
+  pkg.installed:
+    - sources:
+      - percona-release_latest: https://repo.percona.com/apt/percona-release_latest.stretch_all.deb
+
 include:
   - .server
 {% if mysql_salt_user %}
