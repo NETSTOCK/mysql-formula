@@ -1,5 +1,15 @@
+# Adding Percona repo here for now
+percona-repo:
+  pkg.installed:
+    - sources:
+      - percona-release: https://repo.percona.com/apt/percona-release_latest.stretch_all.deb
+
+apt-get update:
+  cmd.run
+
 {% from tpldir ~ "/map.jinja" import mysql with context %}
 {% set os_family = salt['grains.get']('os_family', None) %}
+
 
 {% if "config_directory" in mysql %}
 mysql_config_directory:
